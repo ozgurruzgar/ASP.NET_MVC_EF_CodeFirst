@@ -1,0 +1,46 @@
+﻿@model ASP.NET_MVC_EF_CodeFirst.Models.Person
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Kişi Düzenle</h2>
+<hr />
+
+
+@using (Html.BeginForm())
+{
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="txtName"> Ad </span>
+        @Html.TextBoxFor(p => p.FirstName, new { @class = "form-control", placeholder = "Kişi İsmi: ", aria_label = "Username", aria_describedby = "txtName" })
+        <input type="text">
+    </div>
+    <br />
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="txtSurname"> Soyad </span>
+        @Html.TextBoxFor(p => p.LastName, new { @class = "form-control", placeholder = "Kişi Soyismi: ", aria_label = "Username", aria_describedby = "txtSurname" })
+        <input type="text">
+    </div>
+    <br />
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="txtAge"> Yaş </span>
+        @Html.TextBoxFor(p => p.Age, new { @class = "form-control", placeholder = "Kişi Yaşı: ", aria_label = "Username", aria_describedby = "txtAge" })
+        <input type="text">
+    </div>
+    <br />
+
+    <div class="input-group">
+        <input type="submit" value="Kaydet" class="btn btn-success" />
+    </div>
+
+    <div class="input-group">
+
+        @if (ViewBag.Result != null)
+        {
+            <div class="alert alert-@ViewBag.Status" role="alert">
+                @ViewBag.Result
+            </div>
+        }
+    </div>
+}

@@ -1,0 +1,70 @@
+﻿@model ASP.NET_MVC_EF_CodeFirst.Models.Person
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Kişi Sil</h2>
+<hr />
+
+<p>
+    Aşağıdaki Kişi Kaydını Silmek İstediğinizden Emin Misiniz?
+</p>
+
+@Html.HiddenFor(p => p.Id)
+@*<div class="input-group mb-3">
+        <span class="input-group-text" id="txtName"> Ad </span>
+        @Html.DisplayFor(p => p.FirstName, new { @class = "form-control", aria_label = "Username", aria_describedby = "txtName" })
+        <input type="text">
+    </div>
+    <br />
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="txtSurname"> Soyad </span>
+        @Html.DisplayFor(p => p.LastName, new { @class = "form-control",aria_label = "Username", aria_describedby = "txtSurname" })
+        <input type="text">
+    </div>
+    <br />
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="txtAge"> Yaş </span>
+        @Html.DisplayFor(p => p.Age, new { @class = "form-control",aria_label = "Username", aria_describedby = "txtAge" })
+        <input type="text">
+    </div>
+    <br />*@
+
+<table>
+    <tr>
+        <td><b>Ad : </b></td>
+        <td><b>@Model.FirstName</b></td>
+    </tr>
+    <br />
+    <tr>
+        <td><b>Soyad : </b></td>
+        <td><b>@Model.LastName</b></td>
+    </tr>
+    <br />
+    <tr>
+        <td><b>Yaş : </b></td>
+        <td><b>@Model.Age</b></td>
+    </tr>
+</table>
+<br />
+@using (Html.BeginForm())
+{
+
+    <div class="input-group">
+        <input type="submit" value="Sil" class="btn btn-success" />
+    </div>
+    <br />
+}
+
+<div class="input-group">
+
+    @if (!ViewBag.Result)
+    {
+        <div class="alert alert-@ViewBag.Status" role="alert">
+            @ViewBag.Result
+        </div>
+    }
+</div>
+}

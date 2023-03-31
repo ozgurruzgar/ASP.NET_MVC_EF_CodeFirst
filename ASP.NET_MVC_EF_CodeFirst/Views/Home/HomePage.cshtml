@@ -1,0 +1,63 @@
+﻿@using ASP.NET_MVC_EF_CodeFirst.ViewModels.Home
+@model HomePageViewModel
+@{
+    ViewBag.Title = "HomePage";
+}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>HomePage</h2>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            
+            <div>
+                @Html.ActionLink("Yeni Kişi","New","Person",null,new { @class="btn btn-success"})
+            <br /><br />
+            </div>
+
+             <ul class="list-group">
+                 <li class="list-group-item active">
+                 Kişiler
+                 </li>
+
+                 @foreach (var person in Model.Persons)
+                 {
+             <li class="list-group-item">
+                 @Html.ActionLink("Düzenle", "Edit", "Person", new { personId = person.Id }, new { @class = "btn btn-primary btn-xs" })
+                 @Html.ActionLink("Sil", "Delete", "Person", new { personId = person.Id }, new { @class = "btn btn-danger btn-xs" })
+                 <span class="glyphicon glyphicon-user green"></span> @(person.FirstName +" "+ person.LastName) (<i> @person.Age </i>)
+             </li>
+                 }
+             </ul>
+        </div>
+        <div class="col-md-6">
+
+            <div>
+                @Html.ActionLink("Yeni Adres", "New", "Address", null, new { @class = "btn btn-info" })
+                <br /><br />
+            </div>
+
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    Adresler
+                </li>
+
+                @foreach (var address in Model.Addresses)
+                {
+            <li class="list-group-item">
+                @Html.ActionLink("Düzenle", "Edit", "Address", new { addressId = address.Id }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Sil", "Delete", "Address", new { addressId = address.Id }, new { @class = "btn btn-danger btn-xs" })
+                <span class="glyphicon glyphicon-user blue"></span>  @address.AddressDetail (<i>@(address.Person.FirstName +" "+ address.Person.LastName)</i>)
+            </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+

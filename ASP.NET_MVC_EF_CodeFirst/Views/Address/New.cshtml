@@ -1,0 +1,39 @@
+﻿@model ASP.NET_MVC_EF_CodeFirst.Models.Address
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Yeni Adres</h2>
+<hr />
+
+
+@using (Html.BeginForm())
+{
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="txtAddress"> Adres </span>
+        @Html.TextAreaFor(p => p.AddressDetail, new { @class = "form-control", placeholder = "Kişinin Adresi: ", aria_describedby = "txtAddress", cols="30",rows="10" })
+        <input type="text">
+    </div>
+    <br />
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="ddlPerson"> Soyad </span>
+        @Html.DropDownListFor(p => p.Person.Id, (List<SelectListItem>)ViewBag.Person  ,new { @class = "form-control", aria_label = "Username", aria_describedby = "ddlPerson" })
+        <input type="text">
+    </div>
+    <br />
+
+    <div class="input-group">
+        <input type="submit" value="Kaydet" class="btn btn-success" />
+    </div>
+
+    <div class="input-group">
+
+        @if (ViewBag.Result != null)
+        {
+            <div class="alert alert-@ViewBag.Status" role="alert">
+                @ViewBag.Result
+            </div>
+        }
+    </div>
+}

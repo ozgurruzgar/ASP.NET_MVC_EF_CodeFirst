@@ -1,0 +1,45 @@
+﻿@model ASP.NET_MVC_EF_CodeFirst.Models.Address
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Adresi Sil</h2>
+<hr />
+
+<p>
+    Aşağıdaki Adres Kaydını Silmek İstediğinizden Emin Misiniz?
+</p>
+
+@Html.HiddenFor(p => p.Id)
+
+<table>
+    <tr>
+        <td><b>Adresteki Kişi : </b></td>
+        <td><b>@(Model.Person.FirstName +" "+ Model.Person.LastName)</b></td>
+    </tr>
+    <br />
+    <tr>
+        <td><b>Adres : </b></td>
+        <td><b>@Model.AddressDetail</b></td>
+    </tr>
+</table>
+<br />
+@using (Html.BeginForm())
+{
+
+    <div class="input-group">
+        <input type="submit" value="Sil" class="btn btn-success" />
+    </div>
+    <br />
+}
+
+<div class="input-group">
+
+    @if (!ViewBag.Result)
+    {
+        <div class="alert alert-@ViewBag.Status" role="alert">
+            @ViewBag.Result
+        </div>
+    }
+</div>
+}
